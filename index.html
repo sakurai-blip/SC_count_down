@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#f5f5f7">
@@ -16,143 +16,165 @@
 
 body {
   margin: 0;
+  background: #f5f5f7;
+  color: #1d1d1f;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
     "Helvetica Neue",
-    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
     "Yu Gothic",
     sans-serif;
-  background: #f5f5f7;
-  color: #1d1d1f;
 }
 
 .container {
-  width: min(100% - 32px, 520px);
-  margin: 0 auto;
-  padding: 28px 0 50px;
+  max-width: 520px;
+  margin: auto;
+  padding: 28px 16px 50px;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
-.header .small {
-  font-size: 14px;
+.subtitle {
   color: #86868b;
-  margin-bottom: 4px;
+  font-size: 14px;
+  margin-bottom: 6px;
 }
 
 .days {
-  font-size: 64px;
+  font-size: 72px;
+  line-height: 0.95;
   font-weight: 800;
-  letter-spacing: -3px;
-  line-height: 1;
+  letter-spacing: -4px;
 }
 
 .days-label {
   font-size: 18px;
-  font-weight: 600;
-  margin-top: 5px;
+  font-weight: 700;
+  margin-top: 8px;
 }
 
 .exam-date {
-  margin-top: 8px;
-  font-size: 14px;
   color: #86868b;
+  font-size: 13px;
+  margin-top: 7px;
 }
 
 .card {
   background: white;
-  border-radius: 18px;
+  border-radius: 20px;
   padding: 20px;
   margin-bottom: 14px;
-  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
 }
 
 .card-title {
-  font-size: 15px;
   color: #86868b;
+  font-size: 14px;
+  font-weight: 600;
   margin-bottom: 12px;
 }
 
-.problem-number {
-  font-size: 36px;
-  font-weight: 750;
+.remaining {
+  font-size: 38px;
+  font-weight: 800;
 }
 
-.problem-sub {
+.remaining span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.required {
+  margin-top: 6px;
   font-size: 14px;
-  color: #86868b;
-  margin-top: 4px;
+  color: #666;
 }
 
 .progress {
   height: 10px;
   background: #e5e5ea;
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
-  margin-top: 16px;
+  margin-top: 15px;
 }
 
 .progress-bar {
   height: 100%;
   width: 0%;
   background: #007aff;
-  border-radius: 10px;
-  transition: width .3s;
+  border-radius: 20px;
+  transition: width .3s ease;
 }
 
-.rate {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #666;
+.progress-text {
+  margin-top: 8px;
+  color: #86868b;
+  font-size: 13px;
 }
 
-.targets {
+.pace-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  margin-top: 12px;
 }
 
-.target {
-  border-radius: 14px;
-  padding: 14px 5px;
-  text-align: center;
+.pace {
   background: #f5f5f7;
+  border-radius: 15px;
+  padding: 13px 5px;
+  text-align: center;
 }
 
-.target .num {
+.pace-number {
   font-size: 25px;
-  font-weight: 750;
+  font-weight: 800;
 }
 
-.target .label {
+.pace-label {
   font-size: 12px;
   color: #777;
   margin-top: 3px;
 }
 
-.today-count {
+.pace-result {
+  font-size: 12px;
+  color: #555;
+  margin-top: 7px;
+  line-height: 1.4;
+}
+
+.today-card {
   text-align: center;
-  font-size: 48px;
+}
+
+.today-number {
+  font-size: 58px;
   font-weight: 800;
-  margin: 8px 0 15px;
+  line-height: 1;
+  margin: 5px 0 12px;
+}
+
+.today-label {
+  color: #86868b;
+  font-size: 13px;
+  margin-bottom: 18px;
 }
 
 .buttons {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 button {
   border: none;
   border-radius: 14px;
-  padding: 14px;
   font-size: 16px;
-  font-weight: 650;
+  font-weight: 700;
+  padding: 14px;
   cursor: pointer;
 }
 
@@ -165,46 +187,53 @@ button {
 .minus {
   width: 55px;
   background: #e5e5ea;
-  color: #333;
 }
 
 .reset {
   width: 55px;
   background: #e5e5ea;
-  color: #333;
 }
 
 .status {
-  text-align: center;
+  min-height: 23px;
+  margin-top: 15px;
+  font-size: 15px;
   font-weight: 700;
-  margin-top: 14px;
-  min-height: 22px;
 }
 
-.status.success {
-  color: #34c759;
+.week {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.status.normal {
-  color: #007aff;
+.week-number {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.week-label {
+  color: #86868b;
+  font-size: 13px;
 }
 
 .settings {
   display: grid;
-  gap: 12px;
+  gap: 13px;
 }
 
 label {
-  font-size: 13px;
+  display: block;
   color: #666;
+  font-size: 13px;
+  margin-bottom: 5px;
 }
 
 input {
   width: 100%;
-  margin-top: 5px;
-  padding: 13px;
   border: 1px solid #d2d2d7;
   border-radius: 12px;
+  padding: 13px;
   font-size: 16px;
   background: white;
 }
@@ -213,78 +242,153 @@ input {
   width: 100%;
   background: #1d1d1f;
   color: white;
+  margin-top: 2px;
+}
+
+.message {
+  text-align: center;
+  color: #34c759;
+  font-size: 13px;
+  min-height: 20px;
+  margin-top: 10px;
 }
 
 .note {
   text-align: center;
-  color: #86868b;
-  font-size: 12px;
-  margin-top: 22px;
+  color: #999;
+  font-size: 11px;
   line-height: 1.6;
+  margin-top: 22px;
+}
+
+@media (max-width: 360px) {
+  .days {
+    font-size: 62px;
+  }
+
+  .remaining {
+    font-size: 34px;
+  }
 }
 </style>
 </head>
+
 
 <body>
 
 <div class="container">
 
+  <!-- ヘッダー -->
   <div class="header">
-    <div class="small">情報処理安全確保支援士</div>
 
-    <div class="days" id="days">--</div>
-    <div class="days-label">試験まで</div>
-
-    <div class="exam-date">
-      試験日：2026年11月8日
+    <div class="subtitle">
+      情報処理安全確保支援士
     </div>
+
+    <div class="days" id="days">
+      --
+    </div>
+
+    <div class="days-label">
+      試験まで
+    </div>
+
+    <div class="exam-date" id="examDateText">
+      試験日：----
+    </div>
+
   </div>
 
 
-  <!-- 問題進捗 -->
+  <!-- 残り問題 -->
   <div class="card">
 
-    <div class="card-title">午後問題</div>
-
-    <div class="problem-number">
-      残り <span id="remaining">140</span> 問
+    <div class="card-title">
+      午後問題
     </div>
 
-    <div class="problem-sub">
-      必要ペース：<span id="requiredRate">--</span> 問 / 日
+    <div class="remaining">
+      <span>残り</span>
+      <span id="remaining">140</span>
+      <span>問</span>
+    </div>
+
+    <div class="required">
+      必要ペース：
+      <strong id="requiredRate">--</strong>
+      問 / 日
     </div>
 
     <div class="progress">
       <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <div class="rate">
-      現在の進捗：<span id="completed">0</span> 問
+    <div class="progress-text">
+      完了：
+      <strong id="completed">0</strong>
+      問
     </div>
 
   </div>
 
 
-  <!-- 目標 -->
+  <!-- ペース -->
   <div class="card">
 
-    <div class="card-title">1日の目安</div>
+    <div class="card-title">
+      このペースならどうなる？
+    </div>
 
-    <div class="targets">
+    <div class="pace-grid">
 
-      <div class="target">
-        <div class="num">1</div>
-        <div class="label">最低</div>
+      <div class="pace">
+
+        <div class="pace-number">
+          1
+        </div>
+
+        <div class="pace-label">
+          1問 / 日
+        </div>
+
+        <div class="pace-result" id="pace1">
+          --
+        </div>
+
       </div>
 
-      <div class="target">
-        <div class="num">2</div>
-        <div class="label">目標</div>
+
+      <div class="pace">
+
+        <div class="pace-number">
+          2
+        </div>
+
+        <div class="pace-label">
+          2問 / 日
+        </div>
+
+        <div class="pace-result" id="pace2">
+          --
+        </div>
+
       </div>
 
-      <div class="target">
-        <div class="num">3</div>
-        <div class="label">理想</div>
+
+      <div class="pace">
+
+        <div class="pace-number">
+          3
+        </div>
+
+        <div class="pace-label">
+          3問 / 日
+        </div>
+
+        <div class="pace-result" id="pace3">
+          --
+        </div>
+
       </div>
 
     </div>
@@ -293,12 +397,19 @@ input {
 
 
   <!-- 今日 -->
-  <div class="card">
+  <div class="card today-card">
 
-    <div class="card-title">今日の午後問題</div>
+    <div class="card-title">
+      今日
+    </div>
 
-    <div class="today-count">
-      <span id="today">0</span> 問
+    <div class="today-number">
+      <span id="today">0</span>
+      <span style="font-size:22px;">問</span>
+    </div>
+
+    <div class="today-label">
+      最低 1問　・　目標 2問　・　理想 3問
     </div>
 
     <div class="buttons">
@@ -317,7 +428,43 @@ input {
 
     </div>
 
-    <div id="status" class="status"></div>
+    <div class="status" id="status">
+      まずは1問。
+    </div>
+
+  </div>
+
+
+  <!-- 今週 -->
+  <div class="card">
+
+    <div class="card-title">
+      今週
+    </div>
+
+    <div class="week">
+
+      <div>
+        <div class="week-number">
+          <span id="weekCount">0</span> 問
+        </div>
+
+        <div class="week-label">
+          今週解いた問題
+        </div>
+      </div>
+
+      <div style="text-align:right;">
+        <div class="week-number" style="font-size:22px;">
+          <span id="weekTarget">14</span>
+        </div>
+
+        <div class="week-label">
+          目標
+        </div>
+      </div>
+
+    </div>
 
   </div>
 
@@ -325,19 +472,36 @@ input {
   <!-- 設定 -->
   <div class="card">
 
-    <div class="card-title">設定</div>
+    <div class="card-title">
+      設定
+    </div>
 
     <div class="settings">
 
       <div>
-        <label>試験日</label>
-        <input type="date" id="examInput">
+        <label for="examInput">
+          試験日
+        </label>
+
+        <input
+          type="date"
+          id="examInput"
+        >
       </div>
 
+
       <div>
-        <label>現在の残り問題数</label>
-        <input type="number" id="remainingInput" min="0">
+        <label for="remainingInput">
+          残り問題数
+        </label>
+
+        <input
+          type="number"
+          id="remainingInput"
+          min="0"
+        >
       </div>
+
 
       <button class="save" onclick="saveSettings()">
         設定を保存
@@ -345,12 +509,14 @@ input {
 
     </div>
 
+    <div class="message" id="message"></div>
+
   </div>
 
 
   <div class="note">
-    勉強記録はこの端末のブラウザ内に保存されます。<br>
-    サーバーには送信されません。
+    勉強記録はこの端末のブラウザに保存されます。<br>
+    サーバーには勉強記録を送信しません。
   </div>
 
 </div>
@@ -358,22 +524,36 @@ input {
 
 <script>
 
+/* =========================
+   初期設定
+========================= */
+
 const DEFAULT_EXAM = "2026-11-08";
 const DEFAULT_REMAINING = 140;
 
-let data = JSON.parse(
-  localStorage.getItem("shien士Data") || "{}"
-);
+let data = {};
+
+try {
+  data = JSON.parse(
+    localStorage.getItem("shien士Countdown")
+  ) || {};
+} catch (e) {
+  data = {};
+}
 
 if (!data.exam) {
   data.exam = DEFAULT_EXAM;
 }
 
-if (data.remaining === undefined) {
+if (
+  typeof data.remaining !== "number"
+) {
   data.remaining = DEFAULT_REMAINING;
 }
 
-if (data.completed === undefined) {
+if (
+  typeof data.completed !== "number"
+) {
   data.completed = 0;
 }
 
@@ -382,218 +562,556 @@ if (!data.history) {
 }
 
 
-// 今日の日付
-function todayKey() {
-  const d = new Date();
+/* =========================
+   保存
+========================= */
 
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
+function saveData() {
 
-  return `${y}-${m}-${day}`;
-}
-
-
-// 今日の問題数
-function getTodayCount() {
-  return data.history[todayKey()] || 0;
-}
-
-
-// 保存
-function save() {
   localStorage.setItem(
-    "shien士Data",
+    "shien士Countdown",
     JSON.stringify(data)
   );
+
 }
 
 
-// 残り日数
-function calculateDays() {
+/* =========================
+   今日の日付
+========================= */
+
+function getDateKey(date = new Date()) {
+
+  const y = date.getFullYear();
+
+  const m = String(
+    date.getMonth() + 1
+  ).padStart(2, "0");
+
+  const d = String(
+    date.getDate()
+  ).padStart(2, "0");
+
+  return `${y}-${m}-${d}`;
+
+}
+
+
+/* =========================
+   今日の問題数
+========================= */
+
+function getTodayCount() {
+
+  return data.history[
+    getDateKey()
+  ] || 0;
+
+}
+
+
+/* =========================
+   残り日数
+========================= */
+
+function getDaysRemaining() {
 
   const now = new Date();
 
-  const exam = new Date(data.exam + "T00:00:00");
-
-  const diff = exam - now;
-
-  const days = Math.ceil(
-    diff / (1000 * 60 * 60 * 24)
+  const exam = new Date(
+    data.exam + "T00:00:00"
   );
 
-  return Math.max(days, 0);
+  const diff =
+    exam.getTime() - now.getTime();
+
+  return Math.max(
+    Math.ceil(
+      diff /
+      (1000 * 60 * 60 * 24)
+    ),
+    0
+  );
+
 }
 
 
-// 必要ペース
-function calculateRate() {
+/* =========================
+   必要ペース
+========================= */
 
-  const days = calculateDays();
+function getRequiredRate() {
 
-  if (days <= 0) return 0;
+  const days =
+    getDaysRemaining();
 
-  return data.remaining / days;
+  if (days <= 0) {
+    return data.remaining;
+  }
+
+  return (
+    data.remaining / days
+  );
+
 }
 
 
-// 画面更新
+/* =========================
+   今週の問題数
+========================= */
+
+function getWeekCount() {
+
+  const now = new Date();
+
+  const day =
+    now.getDay();
+
+  const diff =
+    day === 0 ? 6 : day - 1;
+
+  const monday =
+    new Date(now);
+
+  monday.setDate(
+    now.getDate() - diff
+  );
+
+  monday.setHours(
+    0, 0, 0, 0
+  );
+
+  let total = 0;
+
+  for (
+    let i = 0;
+    i < 7;
+    i++
+  ) {
+
+    const d =
+      new Date(monday);
+
+    d.setDate(
+      monday.getDate() + i
+    );
+
+    const key =
+      getDateKey(d);
+
+    total +=
+      data.history[key] || 0;
+  }
+
+  return total;
+
+}
+
+
+/* =========================
+   画面更新
+========================= */
+
 function render() {
 
-  const days = calculateDays();
+  const days =
+    getDaysRemaining();
 
-  document.getElementById("days").textContent = days;
+  const rate =
+    getRequiredRate();
 
-  document.getElementById("remaining").textContent =
-    data.remaining;
-
-  document.getElementById("completed").textContent =
-    data.completed;
-
-  document.getElementById("today").textContent =
+  const today =
     getTodayCount();
 
+  const week =
+    getWeekCount();
 
-  const rate = calculateRate();
 
-  document.getElementById("requiredRate").textContent =
+  document.getElementById(
+    "days"
+  ).textContent = days;
+
+
+  document.getElementById(
+    "remaining"
+  ).textContent =
+    data.remaining;
+
+
+  document.getElementById(
+    "completed"
+  ).textContent =
+    data.completed;
+
+
+  document.getElementById(
+    "today"
+  ).textContent =
+    today;
+
+
+  document.getElementById(
+    "weekCount"
+  ).textContent =
+    week;
+
+
+  document.getElementById(
+    "requiredRate"
+  ).textContent =
     rate.toFixed(2);
 
 
-  // 進捗率
+  document.getElementById(
+    "examDateText"
+  ).textContent =
+    "試験日：" +
+    formatDate(data.exam);
+
+
+  /* 進捗率 */
+
   const total =
-    data.remaining + data.completed;
+    data.remaining +
+    data.completed;
 
   let progress = 0;
 
   if (total > 0) {
+
     progress =
-      (data.completed / total) * 100;
+      data.completed /
+      total *
+      100;
+
   }
 
-  document.getElementById("progressBar").style.width =
+  document.getElementById(
+    "progressBar"
+  ).style.width =
     progress + "%";
 
 
-  // 今日のステータス
-  const today = getTodayCount();
+  /* ペース別結果 */
+
+  setPaceResult(
+    "pace1",
+    1,
+    days
+  );
+
+  setPaceResult(
+    "pace2",
+    2,
+    days
+  );
+
+  setPaceResult(
+    "pace3",
+    3,
+    days
+  );
+
+
+  /* 今日の状態 */
 
   const status =
-    document.getElementById("status");
-
-  status.className = "status";
+    document.getElementById(
+      "status"
+    );
 
   if (today >= 3) {
+
     status.textContent =
       "🟢 理想達成！今日は大勝ち";
-    status.classList.add("success");
 
   } else if (today >= 2) {
+
     status.textContent =
       "🟡 目標達成！";
 
   } else if (today >= 1) {
+
     status.textContent =
       "🔵 最低ライン達成";
 
   } else {
+
     status.textContent =
       "まずは1問。";
+
   }
 
 
-  // 設定欄
-  document.getElementById("examInput").value =
+  /* 設定欄 */
+
+  document.getElementById(
+    "examInput"
+  ).value =
     data.exam;
 
-  document.getElementById("remainingInput").value =
+
+  document.getElementById(
+    "remainingInput"
+  ).value =
     data.remaining;
+
+
+  /* 今週目標 */
+
+  document.getElementById(
+    "weekTarget"
+  ).textContent =
+    days <= 0
+      ? 0
+      : 14;
+
 }
 
 
-// 今日の問題数変更
-function changeToday(amount) {
+/* =========================
+   ペース表示
+========================= */
 
-  const key = todayKey();
+function setPaceResult(
+  elementId,
+  perDay,
+  days
+) {
 
-  const current =
-    data.history[key] || 0;
+  const element =
+    document.getElementById(
+      elementId
+    );
 
-  const next =
-    Math.max(current + amount, 0);
+  const possible =
+    perDay * days;
 
-  const diff =
-    next - current;
+  const remaining =
+    data.remaining;
 
-  data.history[key] = next;
 
-  data.completed += diff;
+  if (possible >= remaining) {
 
-  data.remaining =
-    Math.max(data.remaining - diff, 0);
+    const surplus =
+      possible - remaining;
 
-  save();
+    element.innerHTML =
+      "間に合う<br>" +
+      "＋" +
+      surplus +
+      "問";
 
-  render();
+  } else {
+
+    const shortage =
+      remaining - possible;
+
+    element.innerHTML =
+      "不足<br>" +
+      "−" +
+      shortage +
+      "問";
+
+  }
+
 }
 
 
-// 今日だけリセット
-function resetToday() {
+/* =========================
+   日付表示
+========================= */
 
-  const key = todayKey();
+function formatDate(
+  dateString
+) {
 
-  const current =
+  const parts =
+    dateString.split("-");
+
+  if (parts.length !== 3) {
+    return dateString;
+  }
+
+  return (
+    parts[0] +
+    "年" +
+    Number(parts[1]) +
+    "月" +
+    Number(parts[2]) +
+    "日"
+  );
+
+}
+
+
+/* =========================
+   今日の問題数を変更
+========================= */
+
+function changeToday(
+  amount
+) {
+
+  const key =
+    getDateKey();
+
+  const before =
     data.history[key] || 0;
+
+  const after =
+    Math.max(
+      before + amount,
+      0
+    );
+
+  const difference =
+    after - before;
+
+
+  data.history[key] =
+    after;
+
 
   data.completed =
-    Math.max(data.completed - current, 0);
+    Math.max(
+      data.completed +
+      difference,
+      0
+    );
 
-  data.remaining += current;
+
+  data.remaining =
+    Math.max(
+      data.remaining -
+      difference,
+      0
+    );
+
+
+  saveData();
+
+  render();
+
+}
+
+
+/* =========================
+   今日をリセット
+========================= */
+
+function resetToday() {
+
+  const key =
+    getDateKey();
+
+  const count =
+    data.history[key] || 0;
+
+
+  data.completed =
+    Math.max(
+      data.completed - count,
+      0
+    );
+
+
+  data.remaining += count;
 
   data.history[key] = 0;
 
-  save();
+
+  saveData();
 
   render();
+
 }
 
 
-// 設定保存
+/* =========================
+   設定保存
+========================= */
+
 function saveSettings() {
 
   const exam =
-    document.getElementById("examInput").value;
+    document.getElementById(
+      "examInput"
+    ).value;
 
-  const newRemaining =
+  const remaining =
     Number(
-      document.getElementById("remainingInput").value
+      document.getElementById(
+        "remainingInput"
+      ).value
     );
 
 
   if (!exam) {
-    alert("試験日を入力してください");
+
+    alert(
+      "試験日を入力してください"
+    );
+
     return;
+
   }
 
-  if (newRemaining < 0) {
-    alert("問題数を確認してください");
+
+  if (
+    !Number.isFinite(
+      remaining
+    ) ||
+    remaining < 0
+  ) {
+
+    alert(
+      "残り問題数を確認してください"
+    );
+
     return;
+
   }
 
 
-  data.exam = exam;
-  data.remaining = newRemaining;
+  data.exam =
+    exam;
 
-  save();
+  data.remaining =
+    Math.floor(
+      remaining
+    );
+
+
+  saveData();
 
   render();
 
-  alert("保存しました");
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+  message.textContent =
+    "保存しました";
+
+
+  setTimeout(
+    () => {
+      message.textContent =
+        "";
+    },
+    2000
+  );
+
 }
 
 
-// 初期表示
+/* =========================
+   起動
+========================= */
+
 render();
 
 </script>
