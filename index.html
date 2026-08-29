@@ -2,14 +2,25 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#f5f5f7">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               viewport-fit=cover">
+
+<meta name="apple-mobile-web-app-capable"
+      content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style"
+      content="default">
+
+<meta name="theme-color"
+      content="#f5f5f7">
 
 <title>支援士カウントダウン</title>
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -32,10 +43,6 @@ body {
   margin: auto;
   padding: 24px 16px 45px;
 }
-
-/* =========================
-   ヘッダー
-========================= */
 
 .header {
   text-align: center;
@@ -67,10 +74,6 @@ body {
   margin-top: 5px;
 }
 
-/* =========================
-   カード
-========================= */
-
 .card {
   background: white;
   border-radius: 18px;
@@ -85,10 +88,6 @@ body {
   font-weight: 600;
   margin-bottom: 10px;
 }
-
-/* =========================
-   残り問題
-========================= */
 
 .remaining {
   font-size: 34px;
@@ -119,7 +118,6 @@ body {
   width: 0%;
   background: #007aff;
   border-radius: 20px;
-  transition: width .3s ease;
 }
 
 .progress-text {
@@ -127,10 +125,6 @@ body {
   color: #86868b;
   font-size: 12px;
 }
-
-/* =========================
-   ペース
-========================= */
 
 .pace-grid {
   display: grid;
@@ -162,10 +156,6 @@ body {
   margin-top: 6px;
   line-height: 1.35;
 }
-
-/* =========================
-   今日
-========================= */
 
 .today-card {
   text-align: center;
@@ -217,10 +207,6 @@ button {
   font-weight: 700;
 }
 
-/* =========================
-   学習状況
-========================= */
-
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -254,10 +240,6 @@ button {
   text-align: center;
   font-weight: 600;
 }
-
-/* =========================
-   折りたたみ
-========================= */
 
 details {
   background: white;
@@ -300,10 +282,6 @@ details[open] summary::after {
   margin-bottom: 12px;
 }
 
-/* =========================
-   月
-========================= */
-
 .month-title {
   font-size: 13px;
   font-weight: 700;
@@ -317,10 +295,6 @@ details[open] summary::after {
   gap: 7px;
   padding: 8px 0;
   border-bottom: 1px solid #eee;
-}
-
-.history-row:last-child {
-  border-bottom: none;
 }
 
 .history-date {
@@ -350,10 +324,6 @@ details[open] summary::after {
   font-size: 11px;
 }
 
-/* =========================
-   設定
-========================= */
-
 .settings {
   display: grid;
   gap: 11px;
@@ -379,6 +349,19 @@ input {
   width: 100%;
   background: #1d1d1f;
   color: white;
+}
+
+.update-button {
+  width: 100%;
+  background: #007aff;
+  color: white;
+}
+
+.version {
+  text-align: center;
+  color: #999;
+  font-size: 11px;
+  margin-top: 4px;
 }
 
 .message {
@@ -412,17 +395,13 @@ input {
   }
 
 }
+
 </style>
 </head>
-
 
 <body>
 
 <div class="container">
-
-<!-- =========================
-     ヘッダー
-========================= -->
 
 <div class="header">
 
@@ -438,16 +417,13 @@ input {
     試験まで
   </div>
 
-  <div class="exam-date" id="examDateText">
+  <div class="exam-date"
+       id="examDateText">
     試験日：----
   </div>
 
 </div>
 
-
-<!-- =========================
-     残り問題
-========================= -->
 
 <div class="card">
 
@@ -456,36 +432,48 @@ input {
   </div>
 
   <div class="remaining">
+
     <span>残り</span>
-    <span id="remaining">140</span>
+
+    <span id="remaining">
+      140
+    </span>
+
     <span>問</span>
+
   </div>
 
   <div class="required">
+
     必要ペース：
-    <strong id="requiredRate">--</strong>
+    <strong id="requiredRate">
+      --
+    </strong>
     問 / 日
+
   </div>
 
   <div class="progress">
+
     <div
       class="progress-bar"
-      id="progressBar"
-    ></div>
+      id="progressBar">
+    </div>
+
   </div>
 
   <div class="progress-text">
+
     完了：
-    <strong id="completed">0</strong>
+    <strong id="completed">
+      0
+    </strong>
     問
+
   </div>
 
 </div>
 
-
-<!-- =========================
-     ペース
-========================= -->
 
 <div class="card">
 
@@ -507,8 +495,7 @@ input {
 
       <div
         class="pace-result"
-        id="pace1"
-      >
+        id="pace1">
         --
       </div>
 
@@ -527,8 +514,7 @@ input {
 
       <div
         class="pace-result"
-        id="pace2"
-      >
+        id="pace2">
         --
       </div>
 
@@ -547,8 +533,7 @@ input {
 
       <div
         class="pace-result"
-        id="pace3"
-      >
+        id="pace3">
         --
       </div>
 
@@ -558,10 +543,6 @@ input {
 
 </div>
 
-
-<!-- =========================
-     今日
-========================= -->
 
 <div class="card today-card">
 
@@ -582,29 +563,28 @@ input {
   </div>
 
   <div class="today-label">
+
     最低 1問　・　目標 2問　・　理想 3問
+
   </div>
 
   <div class="buttons">
 
     <button
       class="minus"
-      onclick="changeToday(-1)"
-    >
+      onclick="changeToday(-1)">
       −
     </button>
 
     <button
       class="add"
-      onclick="changeToday(1)"
-    >
+      onclick="changeToday(1)">
       ＋ 1問やった
     </button>
 
     <button
       class="reset"
-      onclick="resetToday()"
-    >
+      onclick="resetToday()">
       ↺
     </button>
 
@@ -612,17 +592,12 @@ input {
 
   <div
     class="status"
-    id="status"
-  >
+    id="status">
     まずは1問。
   </div>
 
 </div>
 
-
-<!-- =========================
-     学習状況
-========================= -->
 
 <div class="card">
 
@@ -636,8 +611,7 @@ input {
 
       <div
         class="summary-number"
-        id="summaryCompleted"
-      >
+        id="summaryCompleted">
         0
       </div>
 
@@ -652,8 +626,7 @@ input {
 
       <div
         class="summary-number"
-        id="summaryAverage"
-      >
+        id="summaryAverage">
         0.00
       </div>
 
@@ -668,8 +641,7 @@ input {
 
       <div
         class="summary-number"
-        id="summaryGoalDays"
-      >
+        id="summaryGoalDays">
         0
       </div>
 
@@ -684,8 +656,7 @@ input {
 
       <div
         class="summary-number"
-        id="summaryNeeded"
-      >
+        id="summaryNeeded">
         --
       </div>
 
@@ -697,20 +668,14 @@ input {
 
   </div>
 
-
   <div
     class="pace-status"
-    id="paceStatus"
-  >
+    id="paceStatus">
     --
   </div>
 
 </div>
 
-
-<!-- =========================
-     学習履歴
-========================= -->
 
 <details>
 
@@ -721,21 +686,18 @@ input {
   <div class="history-content">
 
     <div class="history-header">
-      過去の記録を修正する場合は、数字を変更して「保存」
+
+      過去の記録を修正する場合は、
+      数字を変更して「保存」
+
     </div>
 
-    <div
-      id="historyList"
-    ></div>
+    <div id="historyList"></div>
 
   </div>
 
 </details>
 
-
-<!-- =========================
-     設定
-========================= -->
 
 <details>
 
@@ -755,8 +717,7 @@ input {
 
         <input
           type="date"
-          id="examInput"
-        >
+          id="examInput">
 
       </div>
 
@@ -770,25 +731,39 @@ input {
         <input
           type="number"
           id="remainingInput"
-          min="0"
-        >
+          min="0">
 
       </div>
 
 
       <button
         class="save"
-        onclick="saveSettings()"
-      >
+        onclick="saveSettings()">
         設定を保存
       </button>
+
+
+      <!-- ★今回追加 -->
+
+      <button
+        class="update-button"
+        onclick="updateApp()">
+        ↻ 最新版に更新
+      </button>
+
+
+      <div
+        class="version"
+        id="version">
+        アプリ v1.1
+      </div>
 
     </div>
 
     <div
       class="message"
-      id="message"
-    ></div>
+      id="message">
+    </div>
 
   </div>
 
@@ -796,14 +771,23 @@ input {
 
 
 <div class="note">
+
   学習記録はこの端末のブラウザに保存されます。<br>
   サーバーには学習記録を送信しません。
+
 </div>
 
 </div>
 
 
 <script>
+
+/* ==================================================
+   アプリバージョン
+================================================== */
+
+const APP_VERSION = "1.1";
+
 
 /* ==================================================
    初期設定
@@ -849,11 +833,6 @@ if (!data.exam) {
 
 }
 
-
-/*
-  以前のバージョンとの互換性
-*/
-
 if (
   typeof data.initialRemaining !==
   "number"
@@ -876,7 +855,6 @@ if (
 
 }
 
-
 if (!data.history) {
 
   data.history = {};
@@ -894,6 +872,36 @@ function saveData() {
     "shien士Countdown",
     JSON.stringify(data)
   );
+
+}
+
+
+/* ==================================================
+   最新版に更新
+================================================== */
+
+function updateApp() {
+
+  /*
+    現在のURLにバージョンを付けることで
+    キャッシュされたページではなく
+    新しいページとして読み込ませる。
+    
+    localStorageのデータはそのまま残る。
+  */
+
+  const url =
+    new URL(
+      window.location.href
+    );
+
+  url.searchParams.set(
+    "v",
+    Date.now()
+  );
+
+  window.location.href =
+    url.toString();
 
 }
 
@@ -934,9 +942,7 @@ function getDateKey(
    日付表示
 ================================================== */
 
-function formatDate(
-  key
-) {
+function formatDate(key) {
 
   const parts =
     key.split("-");
@@ -954,9 +960,7 @@ function formatDate(
    曜日
 ================================================== */
 
-function getWeekday(
-  key
-) {
+function getWeekday(key) {
 
   const date =
     new Date(
@@ -964,16 +968,15 @@ function getWeekday(
       "T00:00:00"
     );
 
-  const weekdays =
-    [
-      "日",
-      "月",
-      "火",
-      "水",
-      "木",
-      "金",
-      "土"
-    ];
+  const weekdays = [
+    "日",
+    "月",
+    "火",
+    "水",
+    "木",
+    "金",
+    "土"
+  ];
 
   return weekdays[
     date.getDay()
@@ -1081,7 +1084,7 @@ function getTodayCount() {
 
 
 /* ==================================================
-   最初に記録した日
+   最初に勉強した日
 ================================================== */
 
 function getFirstStudyDate() {
@@ -1173,7 +1176,7 @@ function getAverage() {
 
 
 /* ==================================================
-   目標達成日数
+   2問以上の日数
 ================================================== */
 
 function getGoalDays() {
@@ -1227,7 +1230,7 @@ function getRequiredRate() {
 
 
 /* ==================================================
-   ペース結果
+   ペース表示
 ================================================== */
 
 function setPaceResult(
@@ -1246,9 +1249,7 @@ function setPaceResult(
     days;
 
   const element =
-    document.getElementById(
-      id
-    );
+    document.getElementById(id);
 
 
   if (
@@ -1342,12 +1343,10 @@ function renderHistory() {
   container.innerHTML =
     "";
 
-
   const dates =
     getAllDates();
 
   dates.reverse();
-
 
   let currentMonth =
     "";
@@ -1371,7 +1370,6 @@ function renderHistory() {
 
       currentMonth =
         month;
-
 
       const monthTitle =
         document.createElement(
@@ -1491,7 +1489,6 @@ function renderHistory() {
       saveButton
     );
 
-
     container.appendChild(
       row
     );
@@ -1505,9 +1502,7 @@ function renderHistory() {
    履歴修正
 ================================================== */
 
-function saveHistory(
-  key
-) {
+function saveHistory(key) {
 
   const input =
     document.getElementById(
@@ -1537,7 +1532,6 @@ function saveHistory(
 
   data.history[key] =
     Math.floor(value);
-
 
   saveData();
 
@@ -1594,7 +1588,6 @@ function resetToday() {
   data.history[key] =
     0;
 
-
   saveData();
 
   render();
@@ -1603,7 +1596,7 @@ function resetToday() {
 
 
 /* ==================================================
-   設定
+   設定保存
 ================================================== */
 
 function saveSettings() {
@@ -1672,9 +1665,7 @@ function saveSettings() {
    メッセージ
 ================================================== */
 
-function showMessage(
-  text
-) {
+function showMessage(text) {
 
   const element =
     document.getElementById(
@@ -1699,12 +1690,10 @@ function showMessage(
 
 
 /* ==================================================
-   日付表示
+   長い日付
 ================================================== */
 
-function formatDateLong(
-  key
-) {
+function formatDateLong(key) {
 
   const parts =
     key.split("-");
@@ -1788,10 +1777,9 @@ function render() {
     );
 
 
-  /* 進捗 */
-
   const total =
     data.initialRemaining;
+
 
   const progress =
     total > 0
@@ -1811,8 +1799,6 @@ function render() {
     "%";
 
 
-  /* ペース */
-
   setPaceResult(
     "pace1",
     1
@@ -1828,8 +1814,6 @@ function render() {
     3
   );
 
-
-  /* 今日 */
 
   const status =
     document.getElementById(
@@ -1866,8 +1850,6 @@ function render() {
   }
 
 
-  /* 学習状況 */
-
   document.getElementById(
     "summaryCompleted"
   ).textContent =
@@ -1891,8 +1873,6 @@ function render() {
   ).textContent =
     rate.toFixed(2);
 
-
-  /* 現在ペース */
 
   const paceStatus =
     document.getElementById(
@@ -1925,7 +1905,6 @@ function render() {
         days
       );
 
-
     paceStatus.textContent =
       "🟡 現在の平均ペースだと、約" +
       shortage +
@@ -1933,8 +1912,6 @@ function render() {
 
   }
 
-
-  /* 設定 */
 
   document.getElementById(
     "examInput"
@@ -1948,7 +1925,12 @@ function render() {
     data.initialRemaining;
 
 
-  /* 履歴 */
+  document.getElementById(
+    "version"
+  ).textContent =
+    "アプリ v" +
+    APP_VERSION;
+
 
   renderHistory();
 
