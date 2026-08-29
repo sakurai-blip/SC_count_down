@@ -417,8 +417,7 @@ input {
     試験まで
   </div>
 
-  <div class="exam-date"
-       id="examDateText">
+  <div class="exam-date" id="examDateText">
     試験日：----
   </div>
 
@@ -743,8 +742,6 @@ input {
       </button>
 
 
-      <!-- ★今回追加 -->
-
       <button
         class="update-button"
         onclick="updateApp()">
@@ -755,7 +752,7 @@ input {
       <div
         class="version"
         id="version">
-        アプリ v1.1
+        アプリ v1.2
       </div>
 
     </div>
@@ -786,7 +783,7 @@ input {
    アプリバージョン
 ================================================== */
 
-const APP_VERSION = "1.1";
+const APP_VERSION = "1.2";
 
 
 /* ==================================================
@@ -881,14 +878,6 @@ function saveData() {
 ================================================== */
 
 function updateApp() {
-
-  /*
-    現在のURLにバージョンを付けることで
-    キャッシュされたページではなく
-    新しいページとして読み込ませる。
-    
-    localStorageのデータはそのまま残る。
-  */
 
   const url =
     new URL(
@@ -1815,6 +1804,16 @@ function render() {
   );
 
 
+  /*
+    今日の達成状況
+
+    0問 → まずは1問
+    1問 → 最低ライン
+    2問 → 目標達成
+    3問 → 理想達成
+    4問以上 → 目標超過
+  */
+
   const status =
     document.getElementById(
       "status"
@@ -1822,25 +1821,34 @@ function render() {
 
 
   if (
+    today >= 4
+  ) {
+
+    status.textContent =
+      "🔥 " +
+      today +
+      "問！目標を大幅クリア！";
+
+  } else if (
     today >= 3
   ) {
 
     status.textContent =
-      "🟢 理想達成！今日は大勝ち";
+      "🟢 3問！理想達成！今日は大勝ち";
 
   } else if (
     today >= 2
   ) {
 
     status.textContent =
-      "🟡 目標達成！";
+      "🟡 2問！目標達成！";
 
   } else if (
     today >= 1
   ) {
 
     status.textContent =
-      "🔵 最低ライン達成";
+      "🔵 1問！最低ライン達成";
 
   } else {
 
