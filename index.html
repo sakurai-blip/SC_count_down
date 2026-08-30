@@ -752,7 +752,7 @@ input {
       <div
         class="version"
         id="version">
-        アプリ v1.2
+        アプリ v1.3
       </div>
 
     </div>
@@ -783,7 +783,7 @@ input {
    アプリバージョン
 ================================================== */
 
-const APP_VERSION = "1.2";
+const APP_VERSION = "1.3";
 
 
 /* ==================================================
@@ -1280,8 +1280,9 @@ function setPaceResult(
 
 function getAllDates() {
 
-  const dates = [];
+  const dates = new Set();
 
+  // 今日から試験日までの日付
   const today =
     new Date();
 
@@ -1298,12 +1299,11 @@ function getAllDates() {
   let current =
     new Date(today);
 
-
   while (
     current < exam
   ) {
 
-    dates.push(
+    dates.add(
       getDateKey(current)
     );
 
@@ -1313,7 +1313,17 @@ function getAllDates() {
 
   }
 
-  return dates;
+  // 過去に保存された学習履歴も追加
+  // これがないと「昨日以前」の履歴が表示されない
+  Object.keys(
+    data.history || {}
+  ).forEach(function(key) {
+
+    dates.add(key);
+
+  });
+
+  return Array.from(dates);
 
 }
 
