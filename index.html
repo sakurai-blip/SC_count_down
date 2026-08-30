@@ -752,7 +752,7 @@ input {
       <div
         class="version"
         id="version">
-        アプリ v1.3
+        アプリ v1.2
       </div>
 
     </div>
@@ -783,7 +783,7 @@ input {
    アプリバージョン
 ================================================== */
 
-const APP_VERSION = "1.3";
+const APP_VERSION = "1.4";
 
 
 /* ==================================================
@@ -1280,10 +1280,13 @@ function setPaceResult(
 
 function getAllDates() {
 
-  const dates = new Set();
+  // 保存済みの過去履歴を必ず含める。
+  const dateSet = new Set(
+    Object.keys(data.history || {})
+  );
 
   const today = new Date();
-  today.setHours(0,0,0,0);
+  today.setHours(0, 0, 0, 0);
 
   const exam = new Date(
     data.exam +
@@ -1294,35 +1297,15 @@ function getAllDates() {
   let current = new Date(today);
 
   while (current < exam) {
-    dates.add(getDateKey(current));
-    current.setDate(current.getDate() + 1);
+    dateSet.add(getDateKey(current));
+
+    current.setDate(
+      current.getDate() + 1
+    );
   }
 
-  // 保存済みの履歴は、試験日より前なら必ず追加
-  // これにより昨日以前の記録も消えずに表示される
-  Object.keys(data.history || {}).forEach(function(key) {
-    const d = new Date(key + "T00:00:00");
-    if (!Number.isNaN(d.getTime()) && d < exam) {
-      dates.add(key);
-    }
-  });
-
-  // 保存済み履歴の最古の日付から今日までを補完
-  // 「毎日の履歴」を連続して表示するための処理
-  const savedDates = Object.keys(data.history || {}).sort();
-
-  if (savedDates.length > 0) {
-    const first = new Date(savedDates[0] + "T00:00:00");
-    let d = new Date(first);
-
-    while (d < today) {
-      dates.add(getDateKey(d));
-      d.setDate(d.getDate() + 1);
-    }
-  }
-
-  return Array.from(dates).sort();
-
+  // 保存済み履歴＋今日以降の日付を日付順に返す
+  return Array.from(dateSet).sort();
 }
 
 
