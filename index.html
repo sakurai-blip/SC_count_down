@@ -1282,48 +1282,46 @@ function getAllDates() {
 
   const dates = new Set();
 
-  // 今日から試験日までの日付
-  const today =
-    new Date();
+  const today = new Date();
+  today.setHours(0,0,0,0);
 
-  today.setHours(
-    0,0,0,0
+  const exam = new Date(
+    data.exam +
+    "T00:00:00"
   );
 
-  const exam =
-    new Date(
-      data.exam +
-      "T00:00:00"
-    );
+  // 今日から試験日前日までを追加
+  let current = new Date(today);
 
-  let current =
-    new Date(today);
-
-  while (
-    current < exam
-  ) {
-
-    dates.add(
-      getDateKey(current)
-    );
-
-    current.setDate(
-      current.getDate() + 1
-    );
-
+  while (current < exam) {
+    dates.add(getDateKey(current));
+    current.setDate(current.getDate() + 1);
   }
 
-  // 過去に保存された学習履歴も追加
-  // これがないと「昨日以前」の履歴が表示されない
-  Object.keys(
-    data.history || {}
-  ).forEach(function(key) {
-
-    dates.add(key);
-
+  // 保存済みの履歴は、試験日より前なら必ず追加
+  // これにより昨日以前の記録も消えずに表示される
+  Object.keys(data.history || {}).forEach(function(key) {
+    const d = new Date(key + "T00:00:00");
+    if (!Number.isNaN(d.getTime()) && d < exam) {
+      dates.add(key);
+    }
   });
 
-  return Array.from(dates);
+  // 保存済み履歴の最古の日付から今日までを補完
+  // 「毎日の履歴」を連続して表示するための処理
+  const savedDates = Object.keys(data.history || {}).sort();
+
+  if (savedDates.length > 0) {
+    const first = new Date(savedDates[0] + "T00:00:00");
+    let d = new Date(first);
+
+    while (d < today) {
+      dates.add(getDateKey(d));
+      d.setDate(d.getDate() + 1);
+    }
+  }
+
+  return Array.from(dates).sort();
 
 }
 
